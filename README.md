@@ -90,6 +90,46 @@ Password was 'motorola'
 :+1: FLAG{motorola}
 <hr>
 
+### IntrusionDetection
+Description - I had a call with a call center and they said they installed an anti-virus on my machine, but I've noticed my computer 
+mouse moving when I'm not touching it. I took it into a repair center and they couldn't figure it out but said I should take it to a 
+specialist to find out what's happening.
+
+I tried to open the file but it's got a password so please help me!
+
+The Flag is in the format of FLAG{<creator_account>_<new_account>}
+
+Solution:
+Bruteforce the [Zip File](https://github.com/gnarkill78/CSA_S3_2023/blob/main/machine.zip)
+
+I used zip2john in kali - zip2john logs.zip > logs.txt
+then
+sudo john --format=zip logs.txt
+which gave output
+```
+Using default input encoding: UTF-8
+Loaded 3 password hashes with 3 different salts (ZIP, WinZip [PBKDF2-SHA1 256/256 AVX2 8x])
+Loaded hashes with cost 1 (HMAC size) varying from 52577 to 526836
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst
+starwars         (logs.zip/application.evtx)
+starwars         (logs.zip/sec.evtx)
+starwars         (logs.zip/system.evtx)
+3g 0:00:00:02 DONE 2/3 (2023-08-19 17:19) 1.456g/s 57778p/s 65734c/s 65734C/s 123456..ferrises
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed.
+```
+
+Open the sec.evtx file in Windows Event Viewer and search through the logs
+
+Find user 'sododgy'
+
+:+1: FLAG{vboxuser_sododgy}
+<hr>
+
 ### PubkeyExplorer
 Description - I told my friends I wanted to build an authentication system like the one they use with JWTs but cooler! They 
 said I need a pub key to sign and verify cookies.. Pub key? To which pub?
