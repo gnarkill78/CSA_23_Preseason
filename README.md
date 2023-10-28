@@ -507,3 +507,164 @@ Stopped: Tue Oct 24 19:44:37 2023
 ```
 :+1: FLAG{number1hacker}
 <hr>
+
+### Words Arithmetic
+Description - Can you make a calculator, but in English? Docker URL PORT:1234 
+Flag format: FLAG{777__goodw0rkd0ne__999}
+
+Solution:
+When testing this, used netcat to connect to the remote session. This presented the following:
+```
+Welcome to the english calculator challenge! Please give integer answers (rounded up) to all 200 questions within 15 seconds
+twenty three minus thirty = ?
+```
+The script below connects via netcat, then reads the equation and converts it numbers and calculates the equation.
+
+```
+import subprocess
+from word2number import w2n
+import math
+
+# Define the IP and port to connect to
+ip = "3.104.131.180"
+port = 1234
+
+# Number of times to repeat the process
+iterations = 200
+
+# Define translation for arithmetic symbols
+arithmetic_translation = {
+    "plus": "+",
+    "minus": "-",
+    "times": "*",
+    "dividedby": "/"
+}
+
+# Custom function to handle the conversion of words to numbers
+def convert_word_to_number(word):
+    try:
+        # Use word2number to convert words to numbers
+        return w2n.word_to_num(word)
+    except ValueError:
+        # Handle specific cases like "forty one"
+        if "forty" in word:
+            return w2n.word_to_num(word.replace(" ", "-"))
+        return None
+
+def process_equation(equation_line):
+    equation_line = equation_line.lower()  # Convert to lowercase for case-insensitivity
+
+    # Check if "divided by" is present and replace it with "/"
+    if "divided" in equation_line and "by" in equation_line:
+        equation_line = equation_line.replace("divided by", "dividedby")
+        
+    # Split the equation into components
+    equation_parts = equation_line.split()
+    parsed_equation = ""
+
+    i = 0
+    while i < len(equation_parts):
+        if equation_parts[i] in arithmetic_translation:
+            operator = equation_parts[i]
+            left = equation_parts[:i]
+            right = equation_parts[i+1:]
+
+            # Identify and concatenate multi-word numbers in left and right parts
+            left, right = concatenate_multi_word_numbers(left), concatenate_multi_word_numbers(right)
+
+            # Convert the left and right parts to numbers
+            left_numbers = [convert_word_to_number(word) for word in left]
+            right_numbers = [convert_word_to_number(word) for word in right]
+
+            # Check if there are any invalid words in left or right parts
+            if None in left_numbers or None in right_numbers:
+                print("Invalid word in equation.")
+                return None
+
+            # Determine the operator
+            if operator in arithmetic_translation:
+                parsed_operator = arithmetic_translation[operator]
+            else:
+                # Treat any operator other than "plus," "minus," or "times" as "divided by"
+                parsed_operator = "/"
+
+            # Combine the left and right parts with the operator
+            parsed_equation = " ".join(map(str, left_numbers)) + " " + arithmetic_translation[operator] + " " + " ".join(map(str, right_numbers))
+            break  # We've processed the equation, so we can exit the loop
+        i += 1
+
+    if not parsed_equation:
+        print("Operator not found in equation. Skipping.")
+        return None
+
+    return parsed_equation
+
+def concatenate_multi_word_numbers(words):
+    concatenated_words = []
+    i = 0
+    while i < len(words):
+        number = convert_word_to_number(words[i])
+        if number is not None:
+            concatenated_word = words[i]
+            i += 1
+            while i < len(words) and convert_word_to_number(words[i]) is not None:
+                concatenated_word += " " + words[i]
+                i += 1
+            concatenated_words.append(concatenated_word)
+        else:
+            concatenated_words.append(words[i])
+            i += 1
+    return concatenated_words
+
+for i in range(iterations):
+    # Connect to the IP using Netcat
+    nc_process = subprocess.Popen(['nc', ip, str(port)], stdout=subprocess.PIPE, stdin=subprocess.PIPE, text=True)
+
+    # Read and print the first line
+    welcome_message = nc_process.stdout.readline().strip()
+    print(welcome_message)
+
+    # Read and print the second line
+    equation_line = nc_process.stdout.readline().strip()
+    print(equation_line)
+
+    # Remove the equal sign (=) at the end of the equation
+    equation_line = equation_line.rsplit("=", 1)[0].strip()
+
+    if not equation_line:
+        print("Empty equation. Skipping.")
+        nc_process.stdin.write("\n")
+        nc_process.stdin.flush()
+        continue
+
+    # Process the equation and get the parsed equation
+    parsed_equation = process_equation(equation_line)
+
+    if parsed_equation is not None:
+        # Evaluate the parsed equation
+        answer = math.ceil(eval(parsed_equation))
+        # Round the answer to the nearest integer
+        answer = round(answer)
+        # Print just the answer
+        print(answer)
+
+        # Send the answer to the Netcat connection
+        nc_process.stdin.write(str(answer) + "\n")
+        nc_process.stdin.flush()
+
+        # Check if the answer is correct and print the "Correct! Next" message
+        response = nc_process.stdout.readline().strip()
+        if response.startswith("Correct"):
+            print(response)
+    else:
+        print("Invalid equation. Skipping.")
+
+    # Close the Netcat connection
+    nc_process.stdin.close()
+    nc_process.stdout.close()
+    nc_process.terminate()
+```
+The downside is that it doesn't always run quick enough to answer 200 questions in 15 seconds.
+
+:+1: FLAG{000__N1ceM4thsMyFr13nd__000}
+<hr>
