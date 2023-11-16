@@ -1,30 +1,6 @@
 # CSA_23_Preseason
 # CTF Writeups
 ## Writeups for the ADF Cyber Skills Association Pre-Season challenges.
-There were 30 challenges in total, XX of which I was able to solve. The ones left unsolved were:
-- Cipher This (Cryptography)
-  - Had no idea how to proceed with this one. The only given clue was LPUKWOKVIRYQ
-- Customary, my dear Watson (Reverse Engineering)
-  - REVENG is not my thing obviously but I did start to learn a little about assembly language, obviously not enough though.
-  - This one appeared to required an input file called 'Sherlock.jpeg' of a certain width and height. If that was satisfied, it would write a file called 'data.ana'
-  - I got so far as working out the ratio required for the image and it would create data.ana but that was it.
-- FUD Crypter Alpha (Reverse Engineering)
-  - As above, REVENG is not my thing.
-  - Running the binary printed 'some of the flag' which was 'FLA' then 'Flag? What flag?'
-  - I couldn't work out anything beyond that even when looking at the binary in IDA/Ghidra/GDB/Radare2
-- Nature is very fragile (Steganography)
-  - This one was hard for a very obvious reason. It was created on this [website](https://www.pelock.com/products/steganography-online-codec)
-  - My deduction was that brute force was the only way to tackle this one given the methods of encryption etc stated on the site
-  - I tried writing a script that might aid in reversing the process but no luck
-  - I ended up writing a script that engages the website (using selenium) to upload the image then iterate through the rockyou password list but this is a very slow process
-  - I had 8 VMs running but still had no luck.
-  - I'm leaving it running though just for fun now.
-- Static (Steganography)
-  - Had no idea with this one
-  - Looked like a smaller image placed over the main image
-  - Got nowhere.
-
-Below are my writes to those that I did solve.
 
 ### AdminPasswordHunt
 Description - They told me to Rock your API, so I built an API that rocks 
