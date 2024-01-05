@@ -822,3 +822,132 @@ The downside is that it doesn't always run quick enough to answer 200 questions 
 
 :+1: FLAG{000__N1ceM4thsMyFr13nd__000}
 <hr>
+
+### VBScript is dead, Long Live VBScript
+Description
+VBS is dead? Naaah vbscript will live on! Uncover hidden secrets by decoding a mysterious VBScript code snippet and reveal the concealed flag. 
+Flag format: FLAG{your_f14g}
+
+Solution:
+ChatGTP rewrote the vbs to print from python using the script:
+
+```
+result = (
+    chr(6157853 // int("121cf", 16)) +
+    chr(-6851 + int("1b28", 16)) +
+    chr(int("10735", 16) - 67265) +
+    chr(-88922 + int("15b7a", 16)) +
+    chr(4723161 // int("a637", 16)) +
+    chr(-20918 + int("5209", 16)) +
+    chr(int("5f7e", 16) - 24342) +
+    chr(int("4622", 16) - 17853) +
+    chr(int("155e9", 16) - 87421) +
+    chr(-87944 + int("157f4", 16)) +
+    chr(-89565 + int("15dfd", 16)) +
+    chr(-65506 + int("1001f", 16)) +
+    chr(199584 // int("185d", 16)) +
+    chr(int("3eb2", 16) - 15963) +
+    chr(-8285 + int("20b0", 16)) +
+    chr(427977 // int("10e3", 16)) +
+    chr(-21714 + int("5544", 16)) +
+    chr(5789280 // int("d760", 16)) +
+    chr(int("8dd3", 16) - 36195) +
+    chr(int("baba", 16) - 47686) +
+    chr(int("14ef3", 16) - 85701) +
+    chr(-12746 + int("320d", 16)) +
+    chr(827640 // int("1c5c", 16)) +
+    chr(-41171 + int("a138", 16)) +
+    chr(int("bb24", 16) - 47811) +
+    chr(-78745 + int("1340d", 16)) +
+    chr(2079792 // int("5070", 16)) +
+    chr(int("16880", 16) - 92209) +
+    chr(4733694 // int("bcaf", 16)) +
+    chr(-56885 + int("de9f", 16)) +
+    chr(-87876 + int("157a9", 16)) +
+    chr(int("8a2b", 16) - 35272) +
+    chr(2010048 // int("43b0", 16)) +
+    chr(int("160f", 16) - 5607) +
+    chr(3095802 // int("163ad", 16)) +
+    chr(-95228 + int("17453", 16)) +
+    chr(2875203 // int("8751", 16)) +
+    chr(-1788 + int("73f", 16)) +
+    chr(int("33b7", 16) - 13125) +
+    chr(int("759a", 16) - 30001) +
+    chr(-36954 + int("90ca", 16)) +
+    chr(-74244 + int("12278", 16)) +
+    chr(int("1a7b", 16) - 6733) +
+    chr(int("c25", 16) - 2994) +
+    chr(8885240 // int("14dbb", 16)) +
+    chr(int("91b1", 16) - 37196) +
+    chr(int("13097", 16) - 77867) +
+    chr(-35813 + int("8c51", 16)) +
+    chr(1708330 // int("c445", 16)) +
+    chr(-81985 + int("1406a", 16)) +
+    chr(int("15c73", 16) - 89193) +
+    chr(-86900 + int("153e3", 16)) +
+    chr(1682991 // int("4f35", 16)) +
+    chr(4516824 // int("a9a7", 16)) +
+    chr(-30039 + int("75bc", 16)) +
+    chr(-41278 + int("a1aa", 16)) +
+    chr(916488 // int("2126", 16)) +
+    chr(704030 // int("3bc9", 16)) +
+    chr(-45519 + int("b241", 16)) +
+    chr(5722704 // int("bf10", 16)) +
+    chr(int("bb0b", 16) - 47773) +
+    chr(int("1059", 16) - 4153) +
+    chr(-52796 + int("ce5e", 16)) +
+    chr(6946434 // int("11216", 16)) +
+    chr(916036 // int("20d4", 16)) +
+    chr(854000 // int("215c", 16)) +
+    chr(2012640 // int("f5af", 16)) +
+    chr(3190454 // int("1092a", 16)) +
+    chr(-4855 + int("135a", 16)) +
+    chr(-84718 + int("14b0e", 16)) +
+    chr(int("624f", 16) - 25128) +
+    chr(-22115 + int("56c8", 16)) +
+    chr(int("a699", 16) - 42550) +
+    chr(4718064 // int("b136", 16)) +
+    chr(-47461 + int("b9d4", 16)) +
+    chr(int("5d04", 16) - 23780) +
+    chr(int("a300", 16) - 41658) +
+    chr(-44179 + int("acdf", 16)) +
+    chr(677170 // int("28b2", 16)) +
+    chr(int("153f0", 16) - 86953) +
+    chr(689784 // int("15e8", 16)) +
+    chr(-10789 + int("2a9b", 16)) +
+    chr(int("c02a", 16) - 49096) +
+    chr(1608512 // int("c45a", 16)) +
+    chr(2497930 // int("100c7", 16)) +
+    chr(234004 // int("180e", 16)) +
+    chr(465248 // int("38cb", 16)) +
+    chr(8788070 // int("12a82", 16)) +
+    chr(int("13a63", 16) - 80382) +
+    chr(2702336 // int("5b00", 16)) +
+    chr(1658528 // int("ca75", 16)) +
+    chr(-10133 + int("27db", 16)) +
+    chr(2190266 // int("8c42", 16)) +
+    chr(int("11422", 16) - 70575) +
+    chr(int("12b08", 16) - 76457) +
+    chr(int("83cb", 16) - 33637) +
+    chr(-76326 + int("12a56", 16)) +
+    chr(int("123ab", 16) - 74553) +
+    chr(2017254 // int("9a82", 16)) +
+    chr(6092222 // int("c9ad", 16)) +
+    chr(-66322 + int("10345", 16)) +
+    chr(int("10e47", 16) - 69077) +
+    chr(2096750 // int("4186", 16)) +
+    chr(-46818 + int("b709", 16)) +
+    chr(-7337 + int("1ccb", 16)) +
+    "\n"
+)
+
+print(result)
+```
+
+When run, the output is
+```
+Set oShell = WScript.CreateObject("WSCript.shell")
+oShell.run "cmd /c 'echo FLAG{vb && set F=s_f0r3v3r}'"
+```
+:+1: FLAG{vbs_f0r3v3r}
+<hr>
