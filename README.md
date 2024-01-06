@@ -112,7 +112,7 @@ The following PGP public key is associated with a dark net market user. We suspe
 
 Flag format: FLAG{email@domain.com}
 
-The PGP public key block is in the attachment. [Zip_File](Upload and enter link)
+The PGP public key block is in the attachment. [Zip_File](https://github.com/gnarkill78/CSA_23_Preseason/blob/main/public_key_block76yfkgTiy.zip)
 
 Solution: Putting the public key details into CyberChef reveals that the assocated email address is "samwhiskey@elude.in"
 ```
