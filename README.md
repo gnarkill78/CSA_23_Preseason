@@ -106,6 +106,62 @@ Find user 'sododgy'
 :+1: FLAG{vboxuser_sododgy}
 <hr>
 
+### Pretty Okay Privacy
+Description
+The following PGP public key is associated with a dark net market user. We suspect that the user has not one, but two PGP keys. What is the email address associated with the second PGP key? Write the answer like “email@domain.com”.
+
+Flag format: FLAG{email@domain.com}
+
+The PGP public key block is in the attachment. [Zip_File](Upload and enter link)
+
+Solution: Putting the public key details into CyberChef reveals that the assocated email address is "samwhiskey@elude.in"
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQENBF8OTz4BCAC6K+SGfZC8QsEhFOdZoZT3i1BtbBo6F0iNxFg7O644yDoDuu5K
+Jd5fh+sOcAvad2JAC3Oqrkz+Fs4IroyNjnj2Nm1tZRYuMCFHK58bR3WN0BYCGjHI
+UXTISnjwdw3DtZm1JnsJ2GbqQjptoPICazbrcyjHtxtFIjHwgfgIgqDJCfRB3Lts
+5PuOGaGYQJOGsfZmqyTQUAtKbT7t252UgWvWRYwOPUj83PPF8JoJLwKe6t3Whogi
+0YL1qILLOCFKjFc3udcjrRSr4A1fkFAObeheimOXFNuqA3III16L8nx6EXp8LEbz
+Nn7YchtxUk8LMTc7ezt26cfCk1ATHLDfnvrrABEBAAG0IHNhbXdoaXNrZXkgPHNh
+bXdoaXNrZXlAZWx1ZGUuaW4+iQFOBBMBCAA4FiEE/cFQy0FTq/ZiWLhjJbhKQf5S
+qK4FAl8OTz4CGwMFCwkIBwIGFQoJCAsCBBYCAwECHgECF4AACgkQJbhKQf5SqK4k
+3gf9GXv1iWJ2T7LElFhcXvkH97BFApVJYX4/4BDDL5nEMxghu95wFZXEKHt7tS9/
+9EuBsyDseWW8ytRij3cn/ExXd6AoZtyWMssfE3VimwH7tjhiDXS2b4ci8L+rGnib
+ie0OOBaa5IQg3GE2V9KfhZFlBbiSAIf1BKrUs4JmkabqulANCCV+uqavy8+tbgqk
+MiP8uQQB0jQUPZ8y3azr2Xc7mPx4n8F6GOwQyUXKl4ZVBzpZ/Xj3POLAfWafkr9N
+szfWrXuibWs7wBmmAYPu3wJYhUR7f70I4J6Kp5G2a0ptY7B9B2w7C2OpUaPGFbvD
+f7t3XY/YcHgK+9kJYi+x8qvZ/rkBDQRfDk8+AQgAzSYftS+c3uIZ5r/BwGH3XXdH
+oYCuyVXI61NGAMQMhvwTdSX/1tbUdPsV+P/6dBr7F4w+IdYgP5yYWKa4iygSWwAu
+NwK9xhR7BCvtJMGRv5KDlrMUdCvSrbCfOJblAcm/h1fcjxd+k5VVrAxuc/OxP0zL
++qlp8idaFKvZfPPYnvacs29G0OMGYQ3z/RDCI638SjknqkkSzj7kvV/CI5DyX6wH
+b9NNK8xi6Ruj+fgVvmCCe19jCMNY+TFiUFI2TmVbanzhtYbiBMZtdKIBu14v3n+a
+wPjYgP7rLaSz+gnQBDNp90KYQdRM5HNJp4YquMpncAfvergOLFomcI1d0P9mHwAR
+AQABiQE2BBgBCAAgFiEE/cFQy0FTq/ZiWLhjJbhKQf5SqK4FAl8OTz4CGwwACgkQ
+JbhKQf5SqK69gwf/Whw0H2TM8CGQyI7sETarTxrMTRxE5osNQVnOD+rRD3hTPgSt
+5noHJfcVdnmssC9GubaqQu7YCwSk+fQ+j/vMDVEzmB0k6WXQC+7bcsGUwdfuuJ3W
+lzej3xYD8s4HvShJ2Ili+BiIptHMh9zUFUpGJ1N6bW7gzffRwXl8D89gfFq7ZMWL
+uACUuy1Lr2zXkvd2c5BRtSXIWQyZUom8c73y7ixA6Z1xeVh4PI0B0aEbxQykSmBq
+PMbdb8AwOOwSPn1nE7eo39UkB+frMPiNAQ7ZCxxY7zTSLnMQ0ZTgzBzvCIdNexYW
+Eeh64qMxh+d1FIamp6ZbBzfRdBIpR3HhB/cS+Q==
+=uJ72
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+```
+samwhiskey <samwhiskey@elude.in>
+```
+Jumping on to the OSINT Framework and searching the MIT PGP Key Server (Username > Specific Sites > MIT PGP Key Server), two results are returned:
+```
+Search results for 'samwhiskey'
+Type bits/keyID     Date       User ID
+pub  2048R/FE52A8AE 2020-07-15 samwhiskey <samwhiskey@elude.in>
+pub  4096R/1F0376CA 2019-03-16 samwhiskey <samwhiskey@torbox3uiot6wch.onion>
+```
+
+:+1: FLAG{samwhiskey@torbox3uiot6wch.onion}
+<hr>
+
 ### PubkeyExplorer
 Description - I told my friends I wanted to build an authentication system like the one they use with JWTs but cooler! They 
 said I need a pub key to sign and verify cookies.. Pub key? To which pub?
